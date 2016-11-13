@@ -1,0 +1,10 @@
+ec2-54-245-9-189.us-west-2.compute.amazonaws.com/apps -> dashboard
+ec2-54-245-9-189.us-west-2.compute.amazonaws.com/parse -> proyect
+
+ssh -i "Parse Demo Key Pair.pem" ubuntu@ec2-54-245-9-189.us-west-2.compute.amazonaws.com
+
+cd apps/parse/htdocs
+vim server.js
+sudo forever restartall
+
+exit
