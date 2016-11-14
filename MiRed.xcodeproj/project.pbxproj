@@ -18,6 +18,8 @@
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
 		8C1AD2F51DD7ED92001DF172 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C1AD2F41DD7ED92001DF172 /* LaunchScreen.storyboard */; };
+		8C1AD2FC1DD92C91001DF172 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1AD2FB1DD92C91001DF172 /* FeedVC.swift */; };
+		8C5ABE261DD93DBD00E6E7F1 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5ABE251DD93DBD00E6E7F1 /* SWRevealViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,10 @@
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		8C1AD2F41DD7ED92001DF172 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8C1AD2FA1DD91BBE001DF172 /* MiRed-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MiRed-Bridging-Header.h"; path = "../MiRed-Bridging-Header.h"; sourceTree = "<group>"; };
+		8C1AD2FB1DD92C91001DF172 /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
+		8C5ABE241DD93DBD00E6E7F1 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		8C5ABE251DD93DBD00E6E7F1 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,7 @@
 		81BA813C1A49DA1800E65899 = {
 			isa = PBXGroup;
 			children = (
+				8C5ABE271DD93DC300E6E7F1 /* SWRevealViewCobtroller */,
 				81BA81471A49DA1800E65899 /* ParseStarterProject */,
 				814C3AC51B69877600E307BB /* Resources */,
 				81BA816A1A49DB5600E65899 /* Frameworks */,
@@ -85,7 +92,9 @@
 		81BA81471A49DA1800E65899 /* ParseStarterProject */ = {
 			isa = PBXGroup;
 			children = (
+				8C1AD2FA1DD91BBE001DF172 /* MiRed-Bridging-Header.h */,
 				8C1AD2F41DD7ED92001DF172 /* LaunchScreen.storyboard */,
+				8C1AD2FB1DD92C91001DF172 /* FeedVC.swift */,
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				81BA814C1A49DA1800E65899 /* RegisterVC.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
@@ -114,6 +123,15 @@
 				81BA81761A49E0D500E65899 /* libsqlite3.dylib */,
 			);
 			name = "System Frameworks";
+			sourceTree = "<group>";
+		};
+		8C5ABE271DD93DC300E6E7F1 /* SWRevealViewCobtroller */ = {
+			isa = PBXGroup;
+			children = (
+				8C5ABE241DD93DBD00E6E7F1 /* SWRevealViewController.h */,
+				8C5ABE251DD93DBD00E6E7F1 /* SWRevealViewController.m */,
+			);
+			name = SWRevealViewCobtroller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,8 +206,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C1AD2FC1DD92C91001DF172 /* FeedVC.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* RegisterVC.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
+				8C5ABE261DD93DBD00E6E7F1 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,7 +328,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rba.mired;
 				PRODUCT_NAME = MiRed;
+				SWIFT_OBJC_BRIDGING_HEADER = "MiRed-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -326,8 +348,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rba.mired;
 				PRODUCT_NAME = MiRed;
+				SWIFT_OBJC_BRIDGING_HEADER = "MiRed-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

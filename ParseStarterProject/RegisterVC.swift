@@ -30,6 +30,13 @@ class RegisterVC: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if PFUser.current() != nil {
+            self.goToMain()
+        }
+    }
+    
     func saveUser(){
         let user = PFObject(className: "Usuario")
         user["name"] = "Ricardo"
@@ -80,6 +87,7 @@ class RegisterVC: UIViewController {
                     self.showAlert(message: errorMessage)
                 
                 } else {
+                    self.goToMain()
                     print("Usuario registrado correctamente")
                 }
                 
@@ -108,6 +116,7 @@ class RegisterVC: UIViewController {
                     self.showAlert(message: errorMessage)
                     
                 } else {
+                    self.goToMain()
                     print("Login realizado correctamente")
                 }
                 
@@ -118,7 +127,7 @@ class RegisterVC: UIViewController {
     }
     
     @IBAction func recoveryPassword(_ sender: UIButton) {
-        PFUser.requestPasswordResetForEmail(inBackground: <#T##String#>, block: <#T##PFBooleanResultBlock?##PFBooleanResultBlock?##(Bool, Error?) -> Void#>)
+        
     }
     
     func showActivityIndicator() {
@@ -179,6 +188,10 @@ class RegisterVC: UIViewController {
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: email)
+    }
+    
+    func goToMain() {
+        self.performSegue(withIdentifier: "goToMain", sender: nil)
     }
 
     
