@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class ProfileVC: UIViewController {
 
@@ -30,6 +31,10 @@ class ProfileVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func logout(_ sender: UIBarButtonItem) {
+        PFUser.logOut()
+        performSegue(withIdentifier: "logout", sender: nil)
+    }
     
     /*
      // MARK: - Navigation

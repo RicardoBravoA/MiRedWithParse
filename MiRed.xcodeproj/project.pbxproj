@@ -24,6 +24,7 @@
 		8C1AD2F51DD7ED92001DF172 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C1AD2F41DD7ED92001DF172 /* LaunchScreen.storyboard */; };
 		8C1AD2FC1DD92C91001DF172 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1AD2FB1DD92C91001DF172 /* FeedVC.swift */; };
 		8C5ABE261DD93DBD00E6E7F1 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5ABE251DD93DBD00E6E7F1 /* SWRevealViewController.m */; };
+		9A3234951DDBBEE70006986A /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3234941DDBBEE70006986A /* UserResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		8C1AD2FB1DD92C91001DF172 /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		8C5ABE241DD93DBD00E6E7F1 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		8C5ABE251DD93DBD00E6E7F1 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		9A3234941DDBBEE70006986A /* UserResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				8C03E4CF1DDAC40600984C4A /* DiscoverVC.swift */,
 				8C03E4D11DDAC41A00984C4A /* ProfileVC.swift */,
 				8C03E4D31DDAC42900984C4A /* NotificationVC.swift */,
+				9A3234961DDBBEEC0006986A /* Model */,
 			);
 			path = ParseStarterProject;
 			sourceTree = "<group>";
@@ -144,6 +147,22 @@
 				8C5ABE251DD93DBD00E6E7F1 /* SWRevealViewController.m */,
 			);
 			name = SWRevealViewCobtroller;
+			sourceTree = "<group>";
+		};
+		9A3234961DDBBEEC0006986A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9A3234971DDBBF740006986A /* Response */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		9A3234971DDBBF740006986A /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				9A3234941DDBBEE70006986A /* UserResponse.swift */,
+			);
+			name = Response;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +242,7 @@
 				8C03E4D21DDAC41A00984C4A /* ProfileVC.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* RegisterVC.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
+				9A3234951DDBBEE70006986A /* UserResponse.swift in Sources */,
 				8C5ABE261DD93DBD00E6E7F1 /* SWRevealViewController.m in Sources */,
 				8C03E4D01DDAC40600984C4A /* DiscoverVC.swift in Sources */,
 				8C03E4D41DDAC42900984C4A /* NotificationVC.swift in Sources */,

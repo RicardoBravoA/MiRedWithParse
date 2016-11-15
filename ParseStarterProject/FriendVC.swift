@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Parse
 
-class FriendVC: UIViewController {
+class FriendVC: UITableViewController {
 
     @IBOutlet var imgMenu: UIBarButtonItem!
+    var userResponse:[UserRespose] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +25,57 @@ class FriendVC: UIViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
+        getUsers()
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.userResponse.count;
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath)
+        cell.textLabel?.text = self.userResponse[indexPath.row].name
+        return cell
+    }
+    
+    private func getUsers(){
+        let query = PFUser.query()
+        
+        query?.findObjectsInBackground(block: { (objects, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            } else {
+                self.userResponse.removeAll()
+                
+                for object in objects! {
+                    if let user = object as? PFUser {
+                        
+                        if user.objectId != PFUser.current()?.objectId {
+                            let email = user.email
+                            let name = user.username?.components(separatedBy: "@")[0]
+                            let id = user.objectId
+                            
+                            let myUser = UserRespose(id: id!, name: name!.capitalized, email: email!)
+                            self.userResponse.append(myUser)
+                        }
+                        
+                    }
+                }
+                
+                self.tableView.reloadData()
+                
+            }
+        })
     }
     
     

@@ -35,6 +35,9 @@ class RegisterVC: UIViewController {
         if PFUser.current() != nil {
             self.goToMain()
         }
+        
+        self.navigationController?.navigationBar.isHidden = true
+        
     }
     
     func saveUser(){
