@@ -13,6 +13,7 @@ class UserRespose: NSObject {
     var id: String!
     var name: String!
     var email: String!
+    var isFriend: Bool = false
     
     init(id:String, name:String, email:String) {
         self.id = id

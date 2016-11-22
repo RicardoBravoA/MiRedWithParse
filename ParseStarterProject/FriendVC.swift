@@ -45,6 +45,13 @@ class FriendVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath)
         cell.textLabel?.text = self.userResponse[indexPath.row].name
+        
+        if self.userResponse[indexPath.row].isFriend {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
+        
         return cell
     }
     
@@ -66,6 +73,24 @@ class FriendVC: UITableViewController {
                             let id = user.objectId
                             
                             let myUser = UserRespose(id: id!, name: name!.capitalized, email: email!)
+                            
+                            let query = PFQuery(className: "UserFriend")
+                            query.whereKey("idUser", equalTo: (PFUser.current()?.objectId)!)
+                            query.whereKey("idUserFriend", equalTo: myUser.id)
+                            
+                            query.findObjectsInBackground(block: { (object, error) in
+                                if error != nil {
+                                    print(error!.localizedDescription)
+                                } else {
+                                    if let object = object {
+                                        if object.count > 0 {
+                                            myUser.isFriend = true
+                                            self.tableView.reloadData()
+                                        }
+                                    }
+                                }
+                            })
+                            
                             self.userResponse.append(myUser)
                         }
                         
@@ -78,6 +103,50 @@ class FriendVC: UITableViewController {
         })
     }
     
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        
+        if self.userResponse[indexPath.row].isFriend {
+            cell?.accessoryType = .none
+            
+            let query = PFQuery(className: "UserFriend")
+            query.whereKey("idUser", equalTo: (PFUser.current()?.objectId)!)
+            query.whereKey("idUserFriend", equalTo: self.userResponse[indexPath.row].id)
+            
+            query.findObjectsInBackground(block: { (object, error) in
+                if error != nil {
+                    print(error!.localizedDescription)
+                } else {
+                    if let object = object {
+                        for myObject in object {
+                            myObject.deleteInBackground()
+                            self.userResponse[indexPath.row].isFriend = false
+                        }
+                    }
+                }
+            })
+            
+            
+        } else {
+            cell?.accessoryType = .checkmark
+            
+            let friendship = PFObject(className: "UserFriend")
+            friendship["idUser"] = PFUser.current()?.objectId
+            friendship["idUserFriend"] = self.userResponse[indexPath.row].id
+            
+            let acl = PFACL()
+            acl.getPublicReadAccess = true
+            acl.getPublicWriteAccess = true
+            
+            friendship.acl = acl
+            friendship.saveInBackground()
+            self.userResponse[indexPath.row].isFriend = true
+        }
+        
+        
+        
+    }
     
     /*
      // MARK: - Navigation
